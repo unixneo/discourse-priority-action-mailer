@@ -10,8 +10,8 @@ HIGH_PRIORITY_SMTP_SETTINGS = {
   port: GlobalSetting.smtp_port_priority,
   user_name: GlobalSetting.smtp_user_name_priority,
   password: GlobalSetting.smtp_password_priority,
-#authentication: "plain",
-#enable_starttls_auto: true,
+  authentication: "plain",
+  enable_starttls_auto: true,
 }
 
 after_initialize do
