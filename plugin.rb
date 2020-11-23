@@ -19,7 +19,7 @@ after_initialize do
       before_action :high_priority_smtp_settings
 
       def high_priority_smtp_settings
-        self.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+        AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
       end
     end
 
@@ -27,7 +27,7 @@ after_initialize do
       before_action :high_priority_smtp_settings, only: [:digest]
 
       def high_priority_smtp_settings
-        self.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+        UserNotifications.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
       end
     end
   end
