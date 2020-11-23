@@ -14,7 +14,6 @@ HIGH_PRIORITY_SMTP_SETTINGS = {
   :enable_starttls_auto => true,
 }
 
-after_initialize do
   after_initialize do
     AdminConfirmationMailer.class_eval do
       before_action :high_priority_smtp_settings
