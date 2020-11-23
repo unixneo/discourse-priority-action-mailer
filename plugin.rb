@@ -6,21 +6,23 @@
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 
 HIGH_PRIORITY_SMTP_SETTINGS = {
-  :address => "my.email.server.com",
-  :port => 587,
-  :user_name => "my_email_address",
-  :password => "my_email_password",
-  :authentication => "plain",
-  :enable_starttls_auto => true,
+  address: ENV["SMTP_ADDRESS_PRIORITY"],
+  port: ENV["SMTP_PORT_PRIORITY"],
+  domain: ENV["SMTP_DOMAIN_PRIORITY"],
+  user_name: ENV["SMTP_USERNAME_PRIORITY"],
+  password: ENV["SMTP_PASSWORD_PRIORITY"],
+  authentication: "plain",
+  enable_starttls_auto: true,
 }
 
 after_initialize do
-  AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
   AdminConfirmationMailer.class_eval do
     before_action :high_priority_smtp_settings
 
     def high_priority_smtp_settings
-      AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+      if ENV["SMTP_ADDRESS_PRIORITY"].present?
+        AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+      end
     end
   end
 
@@ -28,7 +30,9 @@ after_initialize do
     before_action :high_priority_smtp_settings, only: [:digest]
 
     def high_priority_smtp_settings
-      UserNotifications.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+      if ENV["SMTP_ADDRESS_PRIORITY"].present?
+        UserNotifications.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+      end
     end
   end
 end
