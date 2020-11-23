@@ -15,6 +15,7 @@ HIGH_PRIORITY_SMTP_SETTINGS = {
 }
 
   after_initialize do
+    AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
     AdminConfirmationMailer.class_eval do
       before_action :high_priority_smtp_settings
 
