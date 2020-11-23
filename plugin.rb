@@ -13,7 +13,7 @@ HIGH_PRIORITY_SMTP_SETTINGS = {
   :authentication => "plain",
   :enable_starttls_auto => true,
 }
-AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+
 after_initialize do
   after_initialize do
     AdminConfirmationMailer.class_eval do
