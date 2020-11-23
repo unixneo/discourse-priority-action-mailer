@@ -27,7 +27,7 @@ after_initialize do
   end
 
   UserNotifications.class_eval do
-    before_action :high_priority_smtp_settings, only: [:digest]
+    before_action :high_priority_smtp_settings, only: [:email_login]
 
     def high_priority_smtp_settings
       if ENV["SMTP_ADDRESS_PRIORITY"].present?
