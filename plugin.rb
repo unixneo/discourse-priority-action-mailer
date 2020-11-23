@@ -14,22 +14,21 @@ HIGH_PRIORITY_SMTP_SETTINGS = {
   :enable_starttls_auto => true,
 }
 
-  after_initialize do
-    AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
-    AdminConfirmationMailer.class_eval do
-      before_action :high_priority_smtp_settings
+after_initialize do
+  AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
+  AdminConfirmationMailer.class_eval do
+    before_action :high_priority_smtp_settings
 
-      def high_priority_smtp_settings
-        AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
-      end
+    def high_priority_smtp_settings
+      AdminConfirmationMailer.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
     end
+  end
 
-    UserNotifications.class_eval do
-      before_action :high_priority_smtp_settings, only: [:digest]
+  UserNotifications.class_eval do
+    before_action :high_priority_smtp_settings, only: [:digest]
 
-      def high_priority_smtp_settings
-        UserNotifications.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
-      end
+    def high_priority_smtp_settings
+      UserNotifications.smtp_settings = HIGH_PRIORITY_SMTP_SETTINGS
     end
   end
 end
