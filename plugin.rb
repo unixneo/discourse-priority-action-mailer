@@ -5,8 +5,6 @@
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 
-register_asset "stylesheets/common/container-names.scss"
-
 HIGH_PRIORITY_SMTP_SETTINGS = {
   :address => "my.email.server.com",
   :port => 587,
