@@ -1,5 +1,7 @@
 # discourse-priority-action-mailer
 
+## UNTESTED DRAFT ONLY.
+
 Required Discourse container environment vars:
 
 ```
