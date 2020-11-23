@@ -1,6 +1,6 @@
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.0.5
+# version: 0.0.6
 # date: 23 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
