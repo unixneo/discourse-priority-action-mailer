@@ -40,4 +40,12 @@ https://github.com/unixneo/discourse-priority-action-mailer
 
 https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 
+###  NOTES
+
+1.  This plugin does not effect the core SMTP default channel which is visible in the Discourse Admin panel.  Nor does this SMTP channel display in the Admin panel (yet).   If anyone is interested to send a PR and code the EmberJS part to display in the Discourse Admin panel, please do.
+
+2.  This plugin has a fixed set of "high priority" methods.     If anyone wants to include other Discourse ActionMailer methods, please let me know and we will consider adding it; or feel free to fork and modify.
+
+
+
 
