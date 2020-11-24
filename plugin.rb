@@ -1,17 +1,17 @@
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.0.20
+# version: 0.0.21
 # date: 24 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 
 PRIORITY_SMTP_SETTINGS = {
-  address: GlobalSetting.smtp_address_priority,
-  port: GlobalSetting.smtp_port_priority,
-  user_name: GlobalSetting.smtp_user_name_priority,
-  password: GlobalSetting.smtp_password_priority,
-  authentication: GlobalSetting.smtp_authentication,
-  enable_starttls_auto: GlobalSetting.smtp_enable_start_tls,
+  address: GlobalSetting.smtp_address_priority || GlobalSetting.smtp_address,
+  port: GlobalSetting.smtp_port_priority || GlobalSetting.smtp_port,
+  user_name: GlobalSetting.smtp_user_name_priority || GlobalSetting.smtp_user_name,
+  password: GlobalSetting.smtp_password_priority || GlobalSetting.smtp_password,
+  authentication: GlobalSetting.smtp_authentication_priority || GlobalSetting.smtp_authentication,
+  enable_starttls_auto: GlobalSetting.smtp_enable_start_tls_priority || GlobalSetting.smtp_enable_start_tls,
 }
 
 after_initialize do
