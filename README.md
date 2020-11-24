@@ -19,7 +19,7 @@ So, this plugin is useful for anyone who want to keep "mission critical" SMTP tr
 
 ### HOW TO INSTALL THIS PLUGIN?
 
-The following additional Discourse container environment vars are required.  These SMTP environmental variable are basically the same as the Discourse default SMTP environmental variables with the ```_PRIORITY``` added to each one:
+The following additional Discourse container environment vars are required, unless you want the default values.  These SMTP environmental variable are basically the same as the Discourse default SMTP environmental variables with the ```_PRIORITY``` added to each one:
 
 ```
 env:
