@@ -21,13 +21,15 @@ PRIORITY_SMTP_SETTINGS = {
   enable_starttls_auto: smtp_enable_start_tls_priority,
 }
 
+DEFAULT_SMTP_SETTINGS = Rails.application.config.action_mailer.smtp_settings
+
 after_initialize do
   AdminConfirmationMailer.class_eval do
     before_action :update_smtp_settings
 
     def update_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
-        AdminConfirmationMailer.smtp_settings = PRIORITY_SMTP_SETTINGS
+        AdminConfirmationMailer.smtp_settings = PRIORITY_SMTP_SETTINGS.reject { |_, y| y.nil? }
       end
     end
   end
@@ -38,13 +40,13 @@ after_initialize do
 
     def update_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
-        UserNotifications.smtp_settings = PRIORITY_SMTP_SETTINGS
+        UserNotifications.smtp_settings = PRIORITY_SMTP_SETTINGS.reject { |_, y| y.nil? }
       end
     end
 
     def default_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
-        UserNotifications.smtp_settings = Rails.application.config.action_mailer.smtp_settings
+        UserNotifications.smtp_settings = DEFAULT_SMTP_SETTINGS.reject { |_, y| y.nil? }
       end
     end
   end
