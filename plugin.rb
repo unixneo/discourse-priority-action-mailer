@@ -1,7 +1,7 @@
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.0.24
-# date: 24 Nov 2020
+# version: 0.0.25
+# date: 27 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 
@@ -29,7 +29,7 @@ after_initialize do
 
     def update_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
-        AdminConfirmationMailer.smtp_settings = PRIORITY_SMTP_SETTINGS.reject { |_, y| y.nil? }
+        AdminConfirmationMailer.smtp_settings = PRIORITY_SMTP_SETTINGS
       end
     end
   end
@@ -40,13 +40,13 @@ after_initialize do
 
     def update_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
-        UserNotifications.smtp_settings = PRIORITY_SMTP_SETTINGS.reject { |_, y| y.nil? }
+        UserNotifications.smtp_settings = PRIORITY_SMTP_SETTINGS
       end
     end
 
     def default_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
-        UserNotifications.smtp_settings = DEFAULT_SMTP_SETTINGS.reject { |_, y| y.nil? }
+        UserNotifications.smtp_settings = DEFAULT_SMTP_SETTINGS
       end
     end
   end
