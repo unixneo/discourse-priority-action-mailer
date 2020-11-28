@@ -1,6 +1,6 @@
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.0.28
+# version: 0.0.29
 # date: 28 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
@@ -61,7 +61,7 @@ after_initialize do
 
     def digest_smtp_settings
       if GlobalSetting.smtp_password_digest.present?
-        UserNotifications.smtp_settings = Rails.application.config.action_mailer.digest_smtp_settings
+        UserNotifications.smtp_settings = Rails.application.config.digest_smtp_settings
       end
     end
 
