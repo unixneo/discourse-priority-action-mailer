@@ -1,6 +1,6 @@
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.0.30
+# version: 0.0.31
 # date: 28 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
@@ -19,7 +19,7 @@ smtp_password_digest = defined?(GlobalSetting.smtp_password_digest) ? GlobalSett
 smtp_authentication_digest = defined?(GlobalSetting.smtp_authentication_digest) ? GlobalSetting.smtp_authentication_digest : GlobalSetting.smtp_authentication
 smtp_enable_start_tls_digest = defined?(GlobalSetting.smtp_enable_start_tls_digest) ? GlobalSetting.smtp_enable_start_tls_digest : GlobalSetting.smtp_enable_start_tls
 
-Rails.application.config.set_priority_smtp_settings = {
+Rails.application.config.priority_smtp_settings = {
   address: smtp_address_priority,
   port: smtp_port_priority,
   user_name: smtp_user_name_priority,
