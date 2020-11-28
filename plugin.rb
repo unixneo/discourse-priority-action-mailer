@@ -1,6 +1,6 @@
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.0.29
+# version: 0.0.30
 # date: 28 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
@@ -19,7 +19,7 @@ smtp_password_digest = defined?(GlobalSetting.smtp_password_digest) ? GlobalSett
 smtp_authentication_digest = defined?(GlobalSetting.smtp_authentication_digest) ? GlobalSetting.smtp_authentication_digest : GlobalSetting.smtp_authentication
 smtp_enable_start_tls_digest = defined?(GlobalSetting.smtp_enable_start_tls_digest) ? GlobalSetting.smtp_enable_start_tls_digest : GlobalSetting.smtp_enable_start_tls
 
-Rails.application.config.priority_smtp_settings = {
+Rails.application.config.set_priority_smtp_settings = {
   address: smtp_address_priority,
   port: smtp_port_priority,
   user_name: smtp_user_name_priority,
@@ -39,9 +39,9 @@ Rails.application.config.digest_smtp_settings = {
 
 after_initialize do
   AdminConfirmationMailer.class_eval do
-    before_action :priority_smtp_settings
+    before_action :set_priority_smtp_settings
 
-    def priority_smtp_settings
+    def set_priority_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
         AdminConfirmationMailer.smtp_settings = Rails.application.config.priority_smtp_settings
       end
@@ -49,17 +49,17 @@ after_initialize do
   end
 
   UserNotifications.class_eval do
-    before_action :priority_smtp_settings, only: [:email_login, :signup, :forgot_password, :admin_login]
-    before_action :digest_smtp_settings, only: [:digest]
-    before_action :default_smtp_settings, except: [:email_login, :signup, :forgot_password, :admin_login, :digest]
+    before_action :set_default_smtp_settings, except: [:email_login, :signup, :forgot_password, :admin_login, :digest]
+    before_action :set_priority_smtp_settings, only: [:email_login, :signup, :forgot_password, :admin_login]
+    before_action :set_digest_smtp_settings, only: [:digest]
 
-    def priority_smtp_settings
+    def set_priority_smtp_settings
       if GlobalSetting.smtp_password_priority.present?
         UserNotifications.smtp_settings = Rails.application.config.priority_smtp_settings
       end
     end
 
-    def digest_smtp_settings
+    def set_digest_smtp_settings
       if GlobalSetting.smtp_password_digest.present?
         UserNotifications.smtp_settings = Rails.application.config.digest_smtp_settings
       end
