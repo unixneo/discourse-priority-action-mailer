@@ -2,14 +2,14 @@
 
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.11
+# version: 0.12
 # date: 30 Nov 2020
 # authors: Neo
 # url: https://github.com/unixneo/discourse-priority-action-mailer
 
 PLUGIN_NAME = "discourse-priority-action-mailer"
 
-require File.expand_path("../lib/configure_smtp_settings.rb", __FILE__)
+require_relative "./lib/configure_smtp_settings"
 
 after_initialize do
   AdminConfirmationMailer.class_eval do
