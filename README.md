@@ -61,7 +61,15 @@ default is the Discourse default SMTP settings for these variables.
 
 ## SEE ALSO
 
-#### Plugin Notes:
+#### Support
+
+https://community.unix.com/t/discourse-priority-action-mailer-plugin/380941
+
+#### Meta Discourse Announcement
+
+https://meta.discourse.org/t/discourse-priority-action-mailer-plugin/171871
+
+#### Original Plugin Concept Notes:
 
 https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 

@@ -5,7 +5,7 @@
 # version: 0.11
 # date: 30 Nov 2020
 # authors: Neo
-# url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
+# url: https://github.com/unixneo/discourse-priority-action-mailer
 
 PLUGIN_NAME = "discourse-priority-action-mailer"
 
