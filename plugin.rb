@@ -2,14 +2,14 @@
 
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.1
+# version: 0.11
 # date: 30 Nov 2020
 # authors: Neo
 # url: https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
 
-plugin_root = "#{Rails.root}/plugins/discourse-priority-action-mailer"
-configure_smtp_settings = "#{plugin_root}/lib/configure_smtp_settings.rb"
-load File.open(configure_smtp_settings)
+PLUGIN_NAME = "discourse-priority-action-mailer"
+
+require File.expand_path("../lib/configure_smtp_settings.rb", __FILE__)
 
 after_initialize do
   AdminConfirmationMailer.class_eval do
