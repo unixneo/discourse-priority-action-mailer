@@ -2,14 +2,16 @@
 
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.12
-# date: 30 Nov 2020
+# version: 0.13
+# date: 9 December 2020
 # authors: Neo
 # url: https://github.com/unixneo/discourse-priority-action-mailer
 
 PLUGIN_NAME = "discourse-priority-action-mailer"
 
 require_relative "./lib/configure_smtp_settings"
+
+enabled_site_setting :enable_priority_action_mailer_plugin
 
 after_initialize do
   AdminConfirmationMailer.class_eval do

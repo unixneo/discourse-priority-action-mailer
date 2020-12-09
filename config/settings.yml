@@ -1,0 +1,4 @@
+plugins:
+  enable_priority_action_mailer_plugin: true
+  priority_action_mailer_digests_enabled:
+    default: true

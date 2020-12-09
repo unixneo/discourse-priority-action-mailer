@@ -1,0 +1,4 @@
+en:
+  site_settings:
+    enable_priority_action_mailer_plugin: "Enable the discourse-priority-action-mailer plugin"
+    priority_action_mailer_digests_enabled: "Enable discourse-priority-action-mailer for digests (TBD)"
