@@ -1,4 +1,6 @@
 en:
   site_settings:
     enable_priority_action_mailer_plugin: "Enable the discourse-priority-action-mailer plugin"
-    priority_action_mailer_digests_enabled: "Enable discourse-priority-action-mailer for digests (TBD)"
+    enable_priority_action_mailer_digests: "Enable discourse-priority-action-mailer for digests"
+    enable_priority_action_mailer_select_notices: "Enable discourse-priority-action-mailer for select notices"
+    enable_priority_action_mailer_admin_confirm: "Enable discourse-priority-action-mailer for admin confirmations"

@@ -1,4 +1,8 @@
 plugins:
   enable_priority_action_mailer_plugin: true
-  priority_action_mailer_digests_enabled:
+  enable_priority_action_mailer_digests:
+    default: true
+  enable_priority_action_mailer_select_notices:
+    default: true
+  enable_priority_action_mailer_admin_confirm:
     default: true

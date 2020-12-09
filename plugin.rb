@@ -2,7 +2,7 @@
 
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.13
+# version: 0.14
 # date: 9 December 2020
 # authors: Neo
 # url: https://github.com/unixneo/discourse-priority-action-mailer
@@ -18,7 +18,9 @@ after_initialize do
     before_action :set_priority_smtp_settings
 
     def set_priority_smtp_settings
-      if GlobalSetting.smtp_password_priority.present?
+      if SiteSetting.enable_priority_action_mailer_plugin? &&
+         SiteSetting.enable_priority_action_mailer_admin_confirm &&
+         GlobalSetting.smtp_password_priority.present?
         AdminConfirmationMailer.smtp_settings = Rails.application.config.priority_smtp_settings
       end
     end
@@ -30,19 +32,24 @@ after_initialize do
     before_action :set_digest_smtp_settings, only: [:digest]
 
     def set_priority_smtp_settings
-      if GlobalSetting.smtp_password_priority.present?
+      if SiteSetting.enable_priority_action_mailer_plugin? &&
+         SiteSetting.enable_priority_action_mailer_select_notices &&
+         GlobalSetting.smtp_password_priority.present?
         UserNotifications.smtp_settings = Rails.application.config.priority_smtp_settings
       end
     end
 
     def set_digest_smtp_settings
-      if GlobalSetting.smtp_password_digest.present?
+      if SiteSetting.enable_priority_action_mailer_plugin? &&
+         SiteSetting.enable_priority_action_mailer_digests? &&
+         GlobalSetting.smtp_password_digest.present?
         UserNotifications.smtp_settings = Rails.application.config.digest_smtp_settings
       end
     end
 
     def set_default_smtp_settings
-      if GlobalSetting.smtp_password_priority.present?
+      if SiteSetting.enable_priority_action_mailer_plugin? &&
+         GlobalSetting.smtp_password_priority.present?
         UserNotifications.smtp_settings = Rails.application.config.action_mailer.smtp_settings
       end
     end
