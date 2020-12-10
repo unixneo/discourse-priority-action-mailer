@@ -59,6 +59,16 @@ https://github.com/unixneo/discourse-priority-action-mailer
 If you do not include any new environmental variable in your Discourse container yml files, or an any are omitted, the
 default is the Discourse default SMTP settings for these variables.
 
+## FLUSH REDIS
+
+Please note that you should flush the existing jobs in REDIS after installing, to clear the prior mailer jobs out of the job queue.  You can run this from inside your DB container:
+
+```
+redis-cli flushall
+```
+
+The command about will flush REDIS and remove the prior action mailer jobs before this plugin was installed.
+
 ## SEE ALSO
 
 #### Support
