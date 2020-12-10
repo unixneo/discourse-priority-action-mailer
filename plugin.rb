@@ -2,7 +2,7 @@
 
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.152
+# version: 0.153
 # date: 9 December 2020
 # authors: Neo
 # url: https://github.com/unixneo/discourse-priority-action-mailer
@@ -27,17 +27,9 @@ after_initialize do
   end
 
   UserNotifications.class_eval do
-    before_action :set_default_smtp_settings, except: [:email_login, :signup, :forgot_password, :admin_login, :user_mentioned, :user_posted, :user_replied, :user_linked, :digest]
-    before_action :set_priority_smtp_settings, only: [:email_login, :signup, :forgot_password, :admin_login, :user_mentioned, :user_posted, :user_replied, :user_linked]
+    before_action :set_default_smtp_settings, except: [:email_login, :signup, :forgot_password, :admin_login, :digest]
+    before_action :set_priority_smtp_settings, only: [:email_login, :signup, :forgot_password, :admin_login]
     before_action :set_digest_smtp_settings, only: [:digest]
-    before_action :set_mentions_smtp_settings, only: [:user_mentioned, :user_posted, :user_replied, :user_linked]
-
-    def set_mentions_smtp_settings
-      if SiteSetting.enable_priority_action_mailer_plugin? &&
-         GlobalSetting.smtp_password_mentions.present?
-        UserNotifications.smtp_settings = Rails.application.config.mentions_smtp_settings
-      end
-    end
 
     def set_priority_smtp_settings
       if SiteSetting.enable_priority_action_mailer_plugin? &&
