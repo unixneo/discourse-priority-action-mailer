@@ -5,10 +5,10 @@
 This Discourse plugin creates new a "high priority" SMTP "channel" for "higher priority" SMTP messages and a new "digest" channel only for digests sent to users, including the ```AdminConfirmationMailer``` and the following methods in the ```UserNotifications``` mailer:
 
 #### PRIORITY CHANNEL ACTIONS
-- All except [:digest]
+- User Notifications - All except [:digest]
 
 #### DIGEST CHANNEL ACTION
-- :digest
+- User Notifications - Only [:digest]
 
 This new "high priority" SMTP channel should be different than your standard channel where Discourse sends out digests, etc.
 
