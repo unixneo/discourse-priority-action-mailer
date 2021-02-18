@@ -5,10 +5,7 @@
 This Discourse plugin creates new a "high priority" SMTP "channel" for "higher priority" SMTP messages and a new "digest" channel only for digests sent to users, including the ```AdminConfirmationMailer``` and the following methods in the ```UserNotifications``` mailer:
 
 #### PRIORITY CHANNEL ACTIONS
-- :email_login, 
-- :signup, 
-- :forgot_password, 
-- :admin_login
+- All except [:digest]
 
 #### DIGEST CHANNEL ACTION
 - :digest
@@ -82,6 +79,10 @@ https://meta.discourse.org/t/discourse-priority-action-mailer-plugin/171871
 #### Original Plugin Concept Notes:
 
 https://community.unix.com/t/creating-higher-priority-smtp-settings-in-discourse-software-mailers-a-future-plugin-idea/380865
+
+#### Example Issue Causes by a Single Discourse SMTP Channel
+
+https://community.unix.com/t/no-confirmation-mail-from-discourse-for-email-change/381802
 
 ####  NOTES
 
