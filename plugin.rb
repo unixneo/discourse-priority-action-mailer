@@ -2,8 +2,8 @@
 
 # name: discourse-priority-action-mailer
 # about: plugin to add priority smtp_settings to action mailer
-# version: 0.153
-# date: 9 December 2020
+# version: 0.16
+# date: 18 Feb 2021
 # authors: Neo
 # url: https://github.com/unixneo/discourse-priority-action-mailer
 
@@ -27,8 +27,9 @@ after_initialize do
   end
 
   UserNotifications.class_eval do
-    before_action :set_default_smtp_settings, except: [:email_login, :signup, :forgot_password, :admin_login, :digest]
-    before_action :set_priority_smtp_settings, only: [:email_login, :signup, :forgot_password, :admin_login]
+    #before_action :set_default_smtp_settings, except: [:email_login, :signup, :forgot_password, :admin_login, :digest]
+    #before_action :set_priority_smtp_settings, only: [:email_login, :signup, :forgot_password, :admin_login]
+    before_action :set_priority_smtp_settings, except: [:digest]
     before_action :set_digest_smtp_settings, only: [:digest]
 
     def set_priority_smtp_settings
